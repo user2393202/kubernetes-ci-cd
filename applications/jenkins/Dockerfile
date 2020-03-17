@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.136
+FROM jenkins/jenkins:2.226
 USER root
 
 #Pre-Install Jenkins Plugins
@@ -19,5 +19,5 @@ apt-get update && apt-get install -y kubectl
 
 # Grant jenkins user group access to /var/run/docker.sock
 RUN addgroup --gid 1001 dsock
-RUN gpasswd -a jenkins dsock 
+RUN gpasswd -a jenkins systemd-bus-proxy
 USER jenkins
